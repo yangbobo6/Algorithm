@@ -12,6 +12,4 @@ public class BinaryTreeTest {
         System.out.println("非递归中序遍历");
         binaryTree.nrInOrderTraverse();
     }
-
-
 }
