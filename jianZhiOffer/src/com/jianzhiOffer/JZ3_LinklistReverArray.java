@@ -2,7 +2,7 @@ package com.jianzhiOffer;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class JZ3_LinklistRever {
+public class JZ3_LinklistReverArray {
 
     class ListNode {
         int val;
