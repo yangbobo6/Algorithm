@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 //寻找第一个公共节点
 //第一个参数{1,2,3}代表是第一个链表非公共部分，第二个参数{4,5}代表是第二个链表非公共部分，最后的{6,7}表示的是2个链表的公共部分
-//        这3个参数最后在后台会组装成为2个两个无环的单链表，且是有公共节点的
+//这3个参数最后在后台会组装成为2个两个无环的单链表，且是有公共节点的
 public class JZ36_FirstPubNode {
 
     //双指针法    将两个链表合并  再求
@@ -24,7 +24,7 @@ public class JZ36_FirstPubNode {
 
     }
 
-    
+
     //用 hashset解决
     public ListNode FindFirstCommonNode1(ListNode pHead1, ListNode pHead2) {
         HashSet<ListNode> set = new HashSet<>();
