@@ -1,5 +1,6 @@
 package com.jianzhiOffer;
 
+import java.util.Queue;
 import java.util.Stack;
 
 
@@ -14,6 +15,7 @@ public class JZ21_StackPushPop {
         if(pushA.length ==0 && popA.length == 0){
             return true;
         }
+
         Stack<Integer> sta = new Stack<>();
         int i = 0; int j = 0;
         while(i<pushA.length){
