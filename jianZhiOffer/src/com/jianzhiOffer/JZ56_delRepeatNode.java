@@ -1,29 +1,60 @@
 package com.jianzhiOffer;
-
+//  难  指针的变化
 public class JZ56_delRepeatNode {
-    public ListNode deleteDuplication(ListNode pHead) {
-        ListNode p = pHead;
-        ListNode r = pHead.next;
-        if(pHead.next==null){
-            return pHead;
-        }
-        while (p.next!=null){
-            if(p.val!=r.val){
-                p = p.next;
-                r = r.next;
-            }
-            while (p.val==r.val){
-                r =r.next;
-                if(p.val!=r.val){
-                    int temp = r.val;
-                    r.val = p.val;
-                    p.val = temp;
-                    p.next = r.next;
-                    r = r.next;
-                }
-            }
 
+    public ListNode buildLinkList(){
+        int [] array = new int[]{1,2,3,3,4,4,5};
+        ListNode pHead = new ListNode(array[0]);
+        ListNode p = pHead;
+        for (int i = 1; i < array.length; i++) {
+            ListNode node = new ListNode(array[i]);
+            node.next = p.next;
+            p.next = node;
+            p = p.next;
+        }
+        p = pHead;
+        while (p!=null){
+            System.out.println(p.val);
+            p = p.next;
         }
         return pHead;
+    }
+
+
+    public ListNode deleteDuplication(ListNode pHead) {
+        ListNode q, p, r;
+        p = pHead;
+        q = r = null;
+
+        while (p != null) {
+            boolean flag = false;
+            r = p.next;
+            while (r != null && r.val == p.val) {
+                flag = true;
+                r = r.next;
+            }
+            if (flag) {
+                if (q != null)
+                    q.next = r;
+                else
+                    pHead = null;
+            } else {
+                if (q == null)
+                    pHead = p;
+                q = p;
+            }
+            p = r;
+        }
+
+        return pHead;
+    }
+
+    public static void main(String[] args) {
+        JZ56_delRepeatNode jz56_delRepeatNode = new JZ56_delRepeatNode();
+        ListNode pHead = jz56_delRepeatNode.buildLinkList();
+        ListNode listNode = jz56_delRepeatNode.deleteDuplication(pHead);
+        while (listNode!=null){
+            System.out.println(listNode.val);
+        }
     }
 }
