@@ -8,37 +8,43 @@ public class JZ59_zhiPrintBinary {
     public ArrayList<ArrayList<Integer>> Print(TreeNode pRoot) {
         Stack<TreeNode> stack1 = new Stack<>();
         Stack<TreeNode> stack2 = new Stack<>();
-        ArrayList<ArrayList<Integer>> lists = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> lists = new ArrayList<ArrayList<Integer>>();
         int flag = 1;
+        if(pRoot==null){
+            return null;
+        }
         stack1.push(pRoot);
-        while (!stack1.isEmpty()&&!stack2.isEmpty()){
-            while (flag%2!=0){
+        while ((!stack1.isEmpty())||(!stack2.isEmpty())){
+            ArrayList<Integer> list = new ArrayList<>();
+            if (flag%2!=0){
                 TreeNode t1 ;
-                ArrayList<Integer> list = new ArrayList<>();
                 while (!stack1.isEmpty()){
                     t1 = stack1.pop();
                     list.add(t1.val);
-                    stack2.push(t1.left);
-                    stack2.push(t1.right);
+                    if(t1.left!=null){
+                        stack2.push(t1.left);
+                    }
+                    if(t1.right!=null){
+                        stack2.push(t1.right);
+                    }
                 }
-                lists.add(list);
-                flag++;
             }
-            while (flag%2==0){
+            else{
                 TreeNode t2 ;
-                ArrayList<Integer> list = new ArrayList<>();
-                while (!stack1.isEmpty()){
-                    t2 = stack1.pop();
+                while (!stack2.isEmpty()){
+                    t2 = stack2.pop();
                     list.add(t2.val);
-                    stack2.push(t2.right);
-                    stack2.push(t2.left);
+                    if(t2.right!=null){
+                        stack1.push(t2.right);
+                    }
+                    if(t2.left!=null){
+                        stack1.push(t2.left);
+                    }
                 }
-                lists.add(list);
-                flag++;
-
             }
+            lists.add(list);
+            flag++;
         }
         return lists;
-
     }
 }

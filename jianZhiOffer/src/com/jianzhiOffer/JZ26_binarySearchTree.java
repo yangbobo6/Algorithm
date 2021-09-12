@@ -6,7 +6,7 @@ public class JZ26_binarySearchTree {
             return pRootOfTree;
         }
         TreeNode rTreeNode = ReserveTreeNode(pRootOfTree);
-
+        return pRootOfTree;
 
     }
 
