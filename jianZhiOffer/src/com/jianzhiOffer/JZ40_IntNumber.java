@@ -1,19 +1,16 @@
 package com.jianzhiOffer;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class JZ40_IntNumber {
     public int[] FindNumsAppearOnce (int[] array) {
         // write code here
         int flag = 0;
         HashMap<Integer,Integer> hashMap = new HashMap<>();
-        int [] list = new int[array.length];
+        int [] list = new int[2];
         for (int i = 0; i < array.length; i++) {
-            if(!hashMap.containsKey(array[i])){
-                hashMap.put(array[i],1);
+            if(!hashMap.containsKey(array[i])) {
+                hashMap.put(array[i], 1);
             }else {
                 hashMap.put(array[i],2);
             }
@@ -23,13 +20,14 @@ public class JZ40_IntNumber {
              ) {
             Integer value = entry.getValue();
             Integer key = entry.getKey();
-            if(value==1){
-                list[flag]=key;
-            }
-            flag++;
             if(flag>1){
                 break;
             }
+            if(value==1){
+                list[flag]=key;
+                flag++;
+            }
+
         }
         Arrays.stream(list).sorted();
         return list;
