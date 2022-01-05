@@ -42,4 +42,48 @@ public class leetCode_002 {
         }
         return sum;
     }
+
+    public ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
+        ListNode p = new ListNode();
+        ListNode l = p;
+        int resNum = 0;
+        int sum = 0;
+        //巧用 flag
+        int flag = 0;
+        while (l1!=null&&l2!=null){
+            if(flag==0){
+                sum = l1.val+l2.val;
+                resNum = sum/10;
+                l.val = sum%10;
+                flag++;
+            }
+            else {
+                sum = l1.val+l2.val+resNum;
+                l.next = new ListNode(sum%10);
+                l = l.next;
+                resNum = sum/10;
+
+            }
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+        while(l1!=null){
+            sum = l1.val+resNum;
+            l.next = new ListNode(sum%10);
+            l = l.next;
+            resNum = sum/10;
+            l1 = l1.next;
+        }
+        while(l2!=null){
+            sum = l2.val+resNum;
+            l.next = new ListNode(sum%10);
+            l = l.next;
+            resNum = sum/10;
+            l2 = l2.next;
+        }
+        if(resNum!=0){
+            l.next = new ListNode(resNum);
+        }
+        return l;
+    }
 }
