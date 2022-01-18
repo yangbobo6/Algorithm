@@ -1,8 +1,16 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class test {
     public static void main(String[] args) {
-        double a = 10;
-        float b = 10;
-        System.out.println(a);
-        System.out.println(b);
+        int numRows = 4;
+        List<StringBuilder> rows = new ArrayList<StringBuilder>();
+        for (int i = 0; i < numRows; i++) {
+            rows.add(new StringBuilder());
+        }
+        for (StringBuilder s:rows
+             ) {
+            System.out.println(s);
+        }
     }
 }
