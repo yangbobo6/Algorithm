@@ -8,35 +8,17 @@ import java.util.*;
  * @Description:
  */
 public class JZ68_lowestCommonAncestor {
-    int MIN_VALUE = -1;
     public int lowestCommonAncestor (TreeNode root, int p, int q) {
-        // write code here
-        Map<Integer,Integer> parent = new HashMap<>();
-        Queue<TreeNode> queue = new LinkedList<>();
-        parent.put(root.val,MIN_VALUE);
-        queue.add(root);
-        while(!parent.containsKey(p)||!parent.containsKey(q)){
-            TreeNode node = queue.poll();
-            if(node.left!=null){
-                parent.put(node.left.val,node.val);
-                queue.add(node.left);
-            }
-            if(node.right!=null){
-                parent.put(node.right.val,node.val);
-                queue.add(node.right);
-            }
 
-        }
-        Set<Integer> ancestors = new HashSet<>();
-        //如果包含o1
-        while(parent.containsKey(p)){
-            ancestors.add(p);
-            p = parent.get(p);
-        }
-        //查看o1和他的祖先是否包含o2
-        while(!ancestors.contains(q)){
-            q = parent.get(q);
-        }
-        return q;
+        // 随便给2个数，利用二叉搜索树的性质：
+
+        // 如果两个值都小于根节点，说明祖先在左子树一侧
+        if(p<root.val && q<root.val)
+            return lowestCommonAncestor(root.left,p,q);
+        // 如果两个值都大于根节点，说明祖先在右子树一侧
+        if(p>root.val && q>root.val)
+            return lowestCommonAncestor(root.right,p,q);
+        // 剩最后一种情况：如果根节点的值恰好在两个给定值之间，这个根节点就是最近的公共祖先
+        return root.val;
     }
 }
