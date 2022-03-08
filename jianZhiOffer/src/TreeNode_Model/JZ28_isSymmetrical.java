@@ -12,7 +12,7 @@ class TreeNode {
 /**
  * @Author: yangbo
  * @Date: 2022-02-17-20:45
- * @Description:
+ * @Description:   对称二叉树
  */
 
 public class JZ28_isSymmetrical {
