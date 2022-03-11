@@ -10,20 +10,20 @@ public class code226_invertTree {
         if(root==null){
             return null;
         }
-        dfs(root.left,root.right);
+        dfs(root);
         return root;
 
     }
 
-    public void dfs(TreeNode left,TreeNode right){
-        if(left==null&&right==null){
+    public void dfs(TreeNode root){
+        if(root==null){
             return;
         }
-        TreeNode tem = left;
-        left = right;
-        right = tem;
-        dfs(left.left,right.right);
-        dfs(left.right,right.left);
+        dfs(root.left);
+        dfs(root.right);
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
     }
 
 }
