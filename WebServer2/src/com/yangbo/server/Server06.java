@@ -1,6 +1,8 @@
 package com.yangbo.server;
 
-import java.io.InputStream;
+import com.yangbo.user.LoginServlet;
+import com.yangbo.user.RegisterServlet;
+
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -13,12 +15,12 @@ import java.net.Socket;
  * 1.内容可以动态添加
  * 2.关注状态码，拼接好协议信息
  */
-public class Server04 {
+public class Server06 {
     //定义成员变量
     private ServerSocket serverSocket;
 
     public static void main(String[] args) throws Exception {
-        Server04 server04 = new Server04();
+        Server06 server04 = new Server06();
         server04.start();
     }
 
@@ -35,22 +37,19 @@ public class Server04 {
         System.out.println("一个客户端建立了连接");
 
         //通过request请求协议  封装好了
-        Request request = new Request(client);
+        Request request1 = new Request(client);
         //通过response回应信息
         Response response = new Response(client);
 
-        //关注了内容
-        response.print("<html>");
-        response.print("<head>");
-        response.print("<title>");
-        response.print("The server is ok");
-        response.print("</title>");
-        response.print("</head>");
-        response.print("<body>");
-        response.print("the server of yang is ok");
-        response.print("hello ,my name is tanXiaoZhu");
-        response.print("</body>");
-        response.print("</html>");
+        if(request1.getUrl().equals("login")){
+            Servlet servlet = new LoginServlet();
+            servlet.service(request1,response);
+        }else if(request1.getUrl().equals("register")){
+            Servlet servlet = new RegisterServlet();
+            servlet.service(request1,response);
+        }else {
+            response.print("hello error");
+        }
 
         //关注了状态码
         response.pushToBrowser(200);

@@ -1,50 +1,17 @@
-package servlet;
+package com.yangbo.server;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author: yangbo
- * @Date: 2022-03-13-17:43
- * @Description:
+ * 处理器 -----专门解析xml文件   获取标签，标签里面的内容等信息
  */
-public class xmlTest2 {
-    public static void main(String[] args) throws Exception {
-        //sax解析
-        //1.获取解析工厂
-        SAXParserFactory factory = SAXParserFactory.newInstance();
-        //2.从解析工厂中获取解析器
-        SAXParser parse = factory.newSAXParser();
-        //3.加载文档 Document注册解析器
-        //4.编写处理器
-        WebHandler handler = new WebHandler();
-        //5.解析  当前线程的类加载器
-        parse.parse(Thread.currentThread()
-                .getContextClassLoader()
-                .getResourceAsStream("servlet/web.xml"),handler);
 
-        //获取数据  在WebContext 构造方法中，有访问的跟路径，定位到类名称
-        WebContext context = new WebContext(handler.getEntities(),handler.getMappings());
-        //假设输入 /login
-        String className = context.getClz("/reg");
-        Class clz = Class.forName(className);
-        Servlet servlet = (Servlet) clz.getConstructor().newInstance();
-        System.out.println(servlet);
-        servlet.service();
-
-    }
-}
-
-class WebHandler extends DefaultHandler {
+public class WebHandler extends DefaultHandler {
 
     private List<Entity> entities;
     private List<Mapping> mappings;
@@ -63,6 +30,7 @@ class WebHandler extends DefaultHandler {
     //开始解析文档
     @Override
     public void startDocument() throws SAXException {
+        System.out.println("--开始解析");
         entities = new ArrayList<Entity>();
         mappings = new ArrayList<Mapping>();
 
