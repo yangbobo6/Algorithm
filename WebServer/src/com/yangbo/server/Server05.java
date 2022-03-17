@@ -47,6 +47,7 @@ public class Server05 {
         response.print("</head>");
         response.print("<body>");
         response.print("the server of yang is ok"+request1.getParameter("uname"));
+        response.println("nihao  xiantan ");
         response.print("hello ,my name is tanXiaoZhu");
         response.print("</body>");
         response.print("</html>");
