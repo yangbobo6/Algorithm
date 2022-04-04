@@ -9,7 +9,8 @@ public class LoginFilter implements Filter{
 
 
     @Override
-    public void next(FilterChain filterChain) {
+    public void next(FilterChain filterChain,int index) {
+        System.out.println("chainIndex"+index+"正在处理");
         filterChain.doFilter();
     }
 }
