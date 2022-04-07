@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class code139_wordBreak {
     public boolean wordBreak(String s, List<String> wordDict) {
-
+        return false;
     }
 
 
