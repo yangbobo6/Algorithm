@@ -14,7 +14,6 @@ public class code70_climbStairs {
         int[] record = new int[n];
         int res = climbStairs(n,record);
         
-        
         return res;
     }
     
