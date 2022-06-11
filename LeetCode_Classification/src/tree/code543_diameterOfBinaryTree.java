@@ -16,9 +16,12 @@ public class code543_diameterOfBinaryTree {
         if(root==null){
             return 0;
         }
-        int leftDepth = diameterOfBinaryTree(root.left);
-        int rightDepth = diameterOfBinaryTree(root.right);
+        //左树的深度
+        int leftDepth = dfs(root.left);
+        int rightDepth = dfs(root.right);
+        //更新直径的最大值
         max = Math.max(leftDepth+rightDepth,max);
+        //返回左右树最深的
         return Math.max(leftDepth,rightDepth)+1;
     }
 }
