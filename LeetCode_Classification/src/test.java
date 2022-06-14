@@ -7,10 +7,15 @@ import java.util.Arrays;
  */
 public class test {
     public static void main(String[] args) {
-        String str = "yangBo";
-        char[] ch = str.toCharArray();
-        System.out.println(ch);
-        Arrays.sort(ch);
-        System.out.println(ch);
+//        String str = "yangBo";
+//        char[] ch = str.toCharArray();
+//        System.out.println(ch);
+//        Arrays.sort(ch);
+//        System.out.println(ch);
+        StringBuilder s = new StringBuilder("yangbo");
+        System.out.println(s);
+        s.reverse();
+        System.out.println(s);
+        
     }
 }

@@ -25,4 +25,12 @@ public class code621_leastInterval {
         }
         return Math.max(tasks.length,(maxTask-1)*(n+1)+countMaxTask);
     }
+
+    public static void main(String[] args) {
+        code621_leastInterval c = new code621_leastInterval();
+        char[] chars = new char[]{'A','A','A','B','B','B','A','A','A','B','B','B','C','C','D','D','D','D'};
+        int n = 2;
+        int i = c.leastInterval(chars, n);
+        System.out.println(i);
+    }
 }

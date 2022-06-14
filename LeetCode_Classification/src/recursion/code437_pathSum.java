@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * @Author: yangbo
  * @Date: 2022-06-12-21:37
- * @Description:
+ * @Description:  前缀树 
  */
 public class code437_pathSum {
     public int pathSum(TreeNode root, int targetSum) {
