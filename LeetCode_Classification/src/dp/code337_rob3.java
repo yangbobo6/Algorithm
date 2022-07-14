@@ -1,6 +1,7 @@
 package dp;
 
-import linklist.TreeNode;
+import tree.TreeNode;
+import tree.code105_buildTree;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,12 +28,12 @@ public class code337_rob3 {
         return Math.max(money,rob(root.left)+rob(root.right));
     }
     //记忆化搜索
-    public int rob2(TreeNode root){
+    public static int rob2(TreeNode root){
         Map<TreeNode,Integer> map = new HashMap<>();
         return robInternal(root,map);
     }
     
-    private int robInternal(TreeNode root,Map<TreeNode,Integer> map){
+    private static int robInternal(TreeNode root,Map<TreeNode,Integer> map){
         if(root==null){
             return 0;
         }
@@ -52,11 +53,11 @@ public class code337_rob3 {
     
     
     //动态规划
-    private int rob3(TreeNode root){
+    private static int rob3(TreeNode root){
         int[] result = robDP(root);
         return Math.max(result[0],result[1]);
     }
-    private int[] robDP(TreeNode root){
+    private static int[] robDP(TreeNode root){
         if(root==null){
             return new int[2];
         }
@@ -72,12 +73,14 @@ public class code337_rob3 {
         return result;
     }
 
-   /* public static void main(String[] args) {
-        int[] preOrder = new int[]{6,3,1,4,2};
-        int[] inOrder = new int[]{1,3,4,6,2};
-        
-        TreeNode root = buildTree(preOrder,inOrder);
-        rob3(root);
-    }*/
+    public static void main(String[] args) {
+        int[] preOrder = new int[]{3,4,1,3,5,1};
+        int[] inOrder = new int[]{1,4,3,3,5,1};
+
+        code105_buildTree code105_buildTree = new code105_buildTree();
+        tree.TreeNode treeNode = code105_buildTree.buildTree(preOrder, inOrder);
+        int res = rob2(treeNode);
+        System.out.println(res);
+    }
     
 }
