@@ -28,6 +28,7 @@ public class DequeTest {
         deque.peek();
         deque.peekFirst();
         deque.peekLast();
+        
         //查看元素  无返回异常
         deque.getFirst();
         deque.getLast();
