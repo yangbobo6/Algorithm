@@ -39,7 +39,7 @@ public class code509_fib {
             return dp[1];
         }
         
-        dp[n] =  fib(n-1)+fib(n-2);
+        dp[n] =  fib(n-1,dp)+fib(n-2,dp);
         return dp[n];
     }
 }
